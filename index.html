@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FocusFlix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white scroll-smooth">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center px-8 py-4 fixed w-full bg-black/70 backdrop-blur z-50">
+        <h1 class="text-3xl font-bold text-red-600">FocusFlix</h1>
+
+        <div class="flex gap-6 items-center">
+            <a href="#" class="hover:text-red-500">Home</a>
+            <a href="#" class="hover:text-red-500">Movies</a>
+            <a href="#" class="hover:text-red-500">Anime</a>
+            <button onclick="loadTopRated()"
+                class="bg-yellow-500 px-4 py-2 rounded text-black font-semibold hover:bg-yellow-400">
+                ⭐ Top Rated
+            </button>
+            <a href="watchlist.html" class="hover:text-red-500">❤️ Watchlist</a>
+            <!-- 🔍 Search -->
+            <input id="search" type="text" placeholder="Search..."
+                class="bg-gray-800 px-3 py-1 rounded outline-none focus:ring-2 focus:ring-red-500">
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    >
+    <section class="h-screen flex items-center px-10 relative"
+        style="background:url('https://images.unsplash.com/photo-1608889175123-8ee362201f81') center/cover">
+        <div class="absolute bottom-0 w-full h-40 bg-gradient-to-t from-black to-transparent"></div>
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/70"></div>
+
+        <div class="max-w-xl relative z-10">
+            <h1 class="text-6xl font-bold mb-4 leading-tight">
+                Unlimited Entertainment
+            </h1>
+
+            <p class="text-gray-300 mb-6">
+                Movies, Anime & TV Shows — all in one place
+            </p>
+
+            <button onclick="playTrailer()" class="bg-red-600 px-6 py-3 rounded hover:bg-red-700 transition">
+                ▶ Play Trailer
+            </button>
+        </div>
+    </section>
+
+    <!-- Movies Section -->
+    <section class="p-8 mt-[-100px] relative z-10">
+        <h2 class="text-2xl mb-4 font-semibold">Trending</h2>
+
+        <div id="movies" class="flex gap-4 overflow-x-scroll scrollbar-hide pb-4">
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+
+        <div class="relative">
+            <!-- ❌ Close Button -->
+            <button id="closeBtn" class="absolute -top-10 right-0 text-white text-2xl">
+                ✖
+            </button>
+
+            <iframe id="video" width="900" height="500" allowfullscreen class="rounded-lg shadow-lg">
+            </iframe>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

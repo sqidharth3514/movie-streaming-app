@@ -1,0 +1,8 @@
+body {
+  font-family: Arial, sans-serif;
+/*scale-150 → scale-125 (less zoom)*/
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

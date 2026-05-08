@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white">
+
+<!-- HERO BANNER -->
+<div id="banner" class="h-[70vh] bg-cover bg-center flex items-end p-10">
+  <div>
+    <h1 id="title" class="text-5xl font-bold mb-4"></h1>
+    <p id="rating" class="text-yellow-400 mb-2"></p>
+    <p id="overview" class="max-w-xl text-gray-300 mb-4"></p>
+
+    <button onclick="playTrailer()" 
+    class="bg-red-600 px-6 py-2 rounded hover:bg-red-700">
+      ▶ Play Trailer
+    </button>
+
+    <button onclick="toggleWatchlist()" 
+    id="watchBtn"
+    class="ml-3 bg-green-600 px-6 py-2 rounded">
+      ❤️ Add
+    </button>
+  </div>
+</div>
+
+<!-- CAST SECTION -->
+<div class="p-10">
+  <h2 class="text-2xl mb-4">Cast</h2>
+  <div id="cast" class="flex gap-4 overflow-x-scroll"></div>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center">
+  <iframe id="video" width="800" height="450" allowfullscreen></iframe>
+</div>
+
+<script>
+const API_KEY = "992af8246589cfbfaf6ce771c0cd2c8f";
+
+const movie = JSON.parse(localStorage.getItem("movie"));
+let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+
+const banner = document.getElementById("banner");
+const title = document.getElementById("title");
+const rating = document.getElementById("rating");
+const overview = document.getElementById("overview");
+const castContainer = document.getElementById("cast");
+const modal = document.getElementById("modal");
+const video = document.getElementById("video");
+const watchBtn = document.getElementById("watchBtn");
+
+// 🎬 SET DATA
+title.innerText = movie.title;
+rating.innerText = "⭐ " + movie.vote_average;
+overview.innerText = movie.overview;
+
+banner.style.backgroundImage = `
+  linear-gradient(to top, black, transparent),
+  url(https://image.tmdb.org/t/p/original${movie.backdrop_path})
+`;
+
+// ❤️ WATCHLIST
+function toggleWatchlist() {
+  const exists = watchlist.find(m => m.id === movie.id);
+
+  if (exists) {
+    watchlist = watchlist.filter(m => m.id !== movie.id);
+    watchBtn.innerText = "❤️ Add";
+  } else {
+    watchlist.push(movie);
+    watchBtn.innerText = "✅ Added";
+  }
+
+  localStorage.setItem("watchlist", JSON.stringify(watchlist));
+}
+
+// 🎬 TRAILER
+async function playTrailer() {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${API_KEY}`
+  );
+
+  const data = await res.json();
+
+  const trailer = data.results.find(
+    vid => vid.type === "Trailer" && vid.site === "YouTube"
+  );
+
+  if (trailer) {
+    modal.classList.remove("hidden");
+    video.src = `https://www.youtube.com/embed/${trailer.key}`;
+  }
+}
+
+// ❌ CLOSE MODAL
+modal.onclick = () => {
+  modal.classList.add("hidden");
+  video.src = "";
+};
+
+// 🎭 CAST FETCH
+async function loadCast() {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${API_KEY}`
+  );
+
+  const data = await res.json();
+
+  data.cast.slice(0, 10).forEach(actor => {
+    if (!actor.profile_path) return;
+
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <img src="https://image.tmdb.org/t/p/w200${actor.profile_path}"
+      class="w-[120px] rounded-lg">
+      <p class="text-sm mt-1">${actor.name}</p>
+    `;
+
+    castContainer.appendChild(div);
+  });
+}
+
+loadCast();
+</script>
+
+</body>
+</html>

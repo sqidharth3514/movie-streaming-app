@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Watchlist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white p-10">
+
+<h1 class="text-3xl mb-6">❤️ My Watchlist</h1>
+
+<div id="watchlistContainer" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+
+<script>
+const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+
+const container = document.getElementById("watchlistContainer");
+
+watchlist.forEach(movie => {
+  const div = document.createElement("div");
+
+  div.innerHTML = `
+    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
+    class="rounded-lg">
+    <p class="mt-2">${movie.title}</p>
+  `;
+
+  container.appendChild(div);
+});
+</script>
+
+</body>
+</html>
