@@ -101,19 +101,19 @@ https://www.themoviedb.org/
 # 📸 Screenshots
 
 ## Home Page
-![Home](./screenshots/home1.png)
-![Home](./screenshots/home2.png)
-![Home](./screenshots/home3.png)
+![Home](./Screenshots/home1.png)
+![Home](./Screenshots/home2.png)
+![Home](./Screenshots/home3.png)
 
 ## Profile Page
-![Profile](./screenshots/Profile.png)
+![Profile](./Screenshots/Profile.png)
 
 ## Movie Detail
-![Movie](./screenshots/Movie-detail.png)
-![Movie](./screenshots/MovieDetail.png)
+![Movie](./Screenshots/Movie-detail.png)
+![Movie](./Screenshots/MovieDetail.png)
 
 ## Login Page
-![Login](./screenshots/Login.png)
+![Login](./Screenshots/Login.png)
 
 ---
 
