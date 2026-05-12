@@ -6,14 +6,17 @@ import mongoose from "mongoose";
 import authRoutes from "./routes/auth.js";
 import watchlistRoutes from "./routes/watchlist.js";
 
+// 🔥 NEW
+import userRoutes from "./routes/userRoutes.js";
+
 dotenv.config();
 
 const app = express();
 
-// ✅ FINAL CORS FIX (auto allow all ports)
+// ✅ FINAL CORS FIX
 app.use(
   cors({
-    origin: true, // 🔥 important (5173, 5174, 5175, 5176 sab chalega)
+    origin: true,
     credentials: true,
   })
 );
@@ -24,18 +27,26 @@ app.use(express.json());
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
+
     console.log("MongoDB Connected ✅");
+
   } catch (err) {
+
     console.error("DB Connection Failed ❌", err.message);
+
     process.exit(1);
   }
 };
 
 connectDB();
 
-// 🔥 routes
+// 🔥 ROUTES
 app.use("/api/auth", authRoutes);
+
 app.use("/api/watchlist", watchlistRoutes);
+
+// 🔥 NEW USER ROUTES
+app.use("/api/user", userRoutes);
 
 // ✅ health check
 app.get("/", (req, res) => {
@@ -44,7 +55,9 @@ app.get("/", (req, res) => {
 
 // ❌ 404 handler
 app.use((req, res) => {
-  res.status(404).json({ message: "Route not found ❌" });
+  res.status(404).json({
+    message: "Route not found ❌",
+  });
 });
 
 // 🔥 server start
