@@ -115,6 +115,9 @@ https://www.themoviedb.org/
 ## Login Page
 ![Login](./Screenshots/Login.png)
 
+## Watchlist
+![Watchlist](./Screenshots/Watchlist.png)
+
 ---
 
 # 👨‍💻 Developer
