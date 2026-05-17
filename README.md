@@ -176,27 +176,27 @@ FocusFlix supports:
 
 ## 🎬 Movie Detail Page
 
-![Movie](./Screenshots/movieDetail.png)
-![Movie](./Screenshots/movie-detail.png)
+![Movie](./Screenshots/MovieDetail.png)
+![Movie](./Screenshots/Movie-detail.png)
 
 
 ---
 
 ## 👤 Profile Page
 
-![Profile](./Screenshots/profile.png)
+![Profile](./Screenshots/Profile.png)
 
 ---
 
 # ❤️ Watchlist
 
-![Watchlist](./Screenshots/watchlist.png)
+![Watchlist](./Screenshots/Watchlist.png)
 
 ---
 
 # 🔐 Login Page
 
-![Login](./Screenshots/login.png)
+![Login](./Screenshots/Login.png)
 
 ---
 
