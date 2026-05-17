@@ -166,10 +166,9 @@ FocusFlix supports:
 
 ## 🏠 Home Page
 
-![Home](./screenshots/home1.png)
-![Home](./screenshots/home2.png)
-![Home](./screenshots/home1.png)
-![Home](./screenshots/home3.png)
+![Home](./Screenshots/home1.png)
+![Home](./Screenshots/home1.png)
+![Home](./Screenshots/home3.png)
 
 
 
@@ -177,27 +176,27 @@ FocusFlix supports:
 
 ## 🎬 Movie Detail Page
 
-![Movie](./screenshots/movieDetail.png)
-![Movie](./screenshots/movie-detail.png)
+![Movie](./Screenshots/movieDetail.png)
+![Movie](./Screenshots/movie-detail.png)
 
 
 ---
 
 ## 👤 Profile Page
 
-![Profile](./screenshots/profile.png)
+![Profile](./Screenshots/profile.png)
 
 ---
 
 # ❤️ Watchlist
 
-![Watchlist](./screenshots/watchlist.png)
+![Watchlist](./Screenshots/watchlist.png)
 
 ---
 
 # 🔐 Login Page
 
-![Login](./screenshots/login.png)
+![Login](./Screenshots/login.png)
 
 ---
 
@@ -255,6 +254,8 @@ focusflix/
 │
 └── README.md 
 ```
+
+---
 
 # ⚙ Installation Guide
 
